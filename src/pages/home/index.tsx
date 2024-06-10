@@ -1,6 +1,30 @@
+import { useEffect, useState } from 'react';
 import { BsCartPlus } from 'react-icons/bs';
 
+import { api } from '../../services/api';
+
+interface ProductsProps {
+  id: number;
+  title: string;
+  description: string;
+  price: number;
+  cover: string;
+}
+
 export function Home() {
+  const [products, setProducts] = useState<ProductsProps[]>([]);
+
+  useEffect(() => {
+    async function getProducts() {
+      const response = await api.get("/products");
+      console.log(response.data);
+
+      setProducts(response.data)
+    }
+    
+    getProducts();
+  }, []);
+
   return (
     <div>
       <main className="wfull max-w-7xl px-4 mx-auto">
@@ -26,6 +50,34 @@ export function Home() {
             </div>
 
           </section>
+
+          {products.map( (product) => (
+            <section
+              key={product.id}
+              className="w-full"
+            >
+              <img
+                className='w-full rounded-lg max-h-70 mb-2'
+                src={product.cover}
+                alt={product.title}
+              />
+
+              <p className='font-medium mt-1 mb-2'>{product.title}</p>
+
+              <div className='flex gap-3 items-center'>
+                <strong className='text-zinc-700/90'>
+                  {product.price.toLocaleString("pt-BR", {
+                    style: "currency",
+                    currency: "BRL"
+                  })}
+                </strong>
+                <button>
+                  <BsCartPlus size={20} color='#FFF' />
+                </button>
+              </div>
+
+            </section>
+          ))}
         </div>
       </main>
     </div>
