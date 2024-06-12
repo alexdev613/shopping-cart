@@ -3,6 +3,8 @@ import { BsCartPlus } from 'react-icons/bs';
 
 import { api } from '../../services/api';
 import { CartContext } from '../../contexts/CartContext';
+
+import { Link } from 'react-router-dom';
 export interface ProductsProps {
   id: number;
   title: string;
@@ -32,9 +34,10 @@ export function Home() {
     console.log(product);
   }
 
+  
   return (
     <div>
-      <main className="wfull max-w-7xl px-4 mx-auto">
+      <main className="w-full max-w-7xl px-4 mx-auto">
         <h1 className="font-bold text-2xl mb-4 mt-10 text-center">Produtos em alta</h1>
 
         <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-5'>
@@ -44,13 +47,15 @@ export function Home() {
               key={product.id}
               className="w-full"
             >
+            <Link to={`/product/${product.id}`}>
               <img
-                className='w-full rounded-lg max-h-70 mb-2'
+                className='w-full rounded-lg max-h-70 mb-2 cursor-pointer hover:scale-110'
                 src={product.cover}
                 alt={product.title}
               />
-
               <p className='font-medium mt-1 mb-2'>{product.title}</p>
+            </Link>
+
 
               <div className='flex gap-3 items-center'>
                 <strong className='text-zinc-700/90'>
