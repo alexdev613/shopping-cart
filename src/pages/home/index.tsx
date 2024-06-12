@@ -4,6 +4,7 @@ import { BsCartPlus } from 'react-icons/bs';
 import { api } from '../../services/api';
 import { CartContext } from '../../contexts/CartContext';
 
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 export interface ProductsProps {
   id: number;
@@ -30,6 +31,14 @@ export function Home() {
   }, []);
 
   function handleAddCartItem(product: ProductsProps) {
+    toast.success("Produto adicionado no carrinho.", {
+      style: {
+        borderRadius: 10,
+        backgroundColor: "#121212",
+        color: "#FFF",
+        height: 48
+      }
+    })
     addItemCart(product)
     console.log(product);
   }
