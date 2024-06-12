@@ -32,7 +32,7 @@ export function Cart() {
           className="w-28"
         />
 
-        <strong>Preço: R$ 1.000</strong>
+        <strong>Preço por unidade: {item.price.toLocaleString("pt-BR", {style: "currency", currency: "BRL"})}</strong>
 
         <div className="flex items-center justify-center gap-3">
           <button
