@@ -1,0 +1,9 @@
+Para rodar a api fake e o nosso app, precisamos abrir dois terminais no diretório do projeto, um colocamos o seguinte comando:
+
+json-server --watch db.json
+
+Que tem a função de rodar a API com o json-server.
+
+E no outro terminal passamos o comando:
+
+npm run dev
