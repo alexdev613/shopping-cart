@@ -15,7 +15,7 @@ export function Header() {
         </Link>
 
         <Link className='relative' to="cart">
-          <FiShoppingCart size={24} color='121212'/>
+          <FiShoppingCart size={24} color='#121212'/>
           {cartAmount > 0 && (
             <span className='absolute -top-3 -right-3 bg-sky-500 rounded-full w-6 h-6 flex items-center justify-center text-white'>
               {cartAmount}
